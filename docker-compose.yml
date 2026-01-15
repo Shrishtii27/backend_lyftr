@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  api:
+    container_name: messaging_lyftr_api
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "sqlite:////data/app.db"
+      WEBHOOK_SECRET: "testsecret"
+      LOG_LEVEL: "INFO"
+    volumes:
+      - app_data:/data
+    restart: unless-stopped
+
+volumes:
+  app_data:
+
+
+
